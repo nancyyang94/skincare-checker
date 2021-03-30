@@ -10,20 +10,20 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Skincare Interaction Checker</h1>
-        <div className="subtitle">
+        <h1 id="header">Skincare Interaction Checker TEST CHANGE</h1>
+        <div id="subtitle">
           Enter two or more products to check for interactions
         </div>
         <div className="form-container">
-          <form className="input-1">
+          <form id="input-1">
             <input type="text">
             </input>
           </form>
-          <form className="input-2">
+          <form id="input-2">
             <input type="text">
             </input>
           </form>
-          <button type="submit">Check Interaction</button>
+          <button id="submit" type="submit">Check Interaction</button>
         </div>
       </div>
     )
