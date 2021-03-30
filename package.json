@@ -1,0 +1,40 @@
+{
+  "name": "skincare-checker",
+  "version": "1.0.0",
+  "description": "skincare ingredient interaction checker",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "nodemon": "^2.0.7",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "scripts": {
+    "test": "npm run test",
+    "start": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nancyyang94/skincare-checker.git"
+  },
+  "author": "Nancy Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nancyyang94/skincare-checker/issues"
+  },
+  "homepage": "https://github.com/nancyyang94/skincare-checker#readme"
+}
