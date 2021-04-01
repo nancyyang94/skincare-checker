@@ -12,6 +12,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useStyles from '../styling/useStyles.jsx';
 import interactions from './interactions.js';
+import ConflictCard from './Card.jsx';
 
 
 export default function App() {
@@ -19,6 +20,8 @@ export default function App() {
   const [product2, setProduct2] = useState('');
   const [actives1, setActives1] = useState(null);
   const [actives2, setActives2] = useState(null);
+
+  const [submitClicked, setSubmitClicked] = useState(false);
 
   const classes = useStyles();
 
@@ -54,6 +57,7 @@ export default function App() {
     console.log(error);
     })
 
+    setSubmitClicked(true);
   };
 
   const checkForConflicts = (arr1, arr2) => {
@@ -63,7 +67,7 @@ export default function App() {
       for (var j = 0; j < arr2.length; j++) {
         let active2 = arr2[j];
         if (interactions1.includes(active2)) {
-          return 'Conflict!';
+          return `${active1} and ${active2} used together ${interactions[active1][active2]}`;
         } else {
           return 'No conflict between ingredients.'
         }
@@ -81,12 +85,6 @@ export default function App() {
           </Typography>
           <Typography component="h3" variant="h5">
             Enter two products to check for potential ingredient interactions
-          </Typography>
-          <Typography component="h3" variant="h5">
-            {actives1}
-          </Typography>
-          <Typography component="h3" variant="h5">
-            {actives2}
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -125,10 +123,11 @@ export default function App() {
               Check for Interactions
             </Button>
           </form>
-          <Typography component="h3" variant="h5">
-            {actives1 && actives2 && checkForConflicts(actives1, actives2)}
-          </Typography>
+          {/* <Typography component="h3" variant="h5">
+            {(actives1 && actives2) ? checkForConflicts(actives1, actives2) : null}
+          </Typography> */}
         </div>
+        {submitClicked && <ConflictCard actives1={actives1} actives2={actives2} checkForConflicts={checkForConflicts}/>}
       </Grid>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
     </Grid>
