@@ -60,6 +60,21 @@ export default function App() {
     setSubmitClicked(true);
   };
 
+  const conflict = (arr1, arr2) => {
+    for (var i = 0; i < arr1.length; i++) {
+      let active1 = arr1[i];
+      const interactions1 = Object.keys(interactions[active1]);
+      for (var j = 0; j < arr2.length; j++) {
+        let active2 = arr2[j];
+        if (interactions1.includes(active2)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+
   const checkForConflicts = (arr1, arr2) => {
     for (var i = 0; i < arr1.length; i++) {
       let active1 = arr1[i];
@@ -68,8 +83,6 @@ export default function App() {
         let active2 = arr2[j];
         if (interactions1.includes(active2)) {
           return `${active1} and ${active2} used together ${interactions[active1][active2]}`;
-        } else {
-          return 'No conflict between ingredients.'
         }
       }
     }
@@ -123,11 +136,8 @@ export default function App() {
               Check for Interactions
             </Button>
           </form>
-          {/* <Typography component="h3" variant="h5">
-            {(actives1 && actives2) ? checkForConflicts(actives1, actives2) : null}
-          </Typography> */}
         </div>
-        {submitClicked && <ConflictCard actives1={actives1} actives2={actives2} checkForConflicts={checkForConflicts}/>}
+        {submitClicked && <ConflictCard actives1={actives1} actives2={actives2} conflict={conflict}checkForConflicts={checkForConflicts}/>}
       </Grid>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
     </Grid>

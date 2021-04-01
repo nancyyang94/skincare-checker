@@ -12,24 +12,17 @@ const useStyles = makeStyles({
     minWidth: 275,
     textAlign: 'center',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+
+  message: {
+    textAlign: 'left',
   },
+
   title: {
     fontSize: 25,
   },
-  pos: {
-    marginBottom: 12,
-  },
-
-  buttons: {
-    align: 'center'
-  }
 });
 
-export default function ConflictCard({ actives1, actives2, checkForConflicts }) {
+export default function ConflictCard({ actives1, actives2, conflict, checkForConflicts }) {
 
 
   const classes = useStyles();
@@ -37,15 +30,15 @@ export default function ConflictCard({ actives1, actives2, checkForConflicts }) 
   return (
     <Card className={classes.root}>
       <CardContent>
+      <ErrorOutlineOutlinedIcon fontSize="large" />
         <Typography
           className={classes.title}
           color="textSecondary"
           gutterBottom>
-          Interaction Found
-        </Typography>
-        <ErrorOutlineOutlinedIcon />
-        <Typography variant="h5" component="h2">
-        {(actives1 && actives2) ? checkForConflicts(actives1, actives2) : 'No conflicts found'}
+          {(actives1 && actives2) && conflict(actives1, actives2)  ? `Interaction Found:
+          ${checkForConflicts(actives1, actives2)}`
+          : null}
+          {(actives1 && actives2) && !conflict(actives1, actives2)  ? 'No interactions found' : null}
         </Typography>
       </CardContent>
       <CardActions className={classes.buttons}>
