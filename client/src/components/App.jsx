@@ -119,7 +119,7 @@ export default function App() {
           <Typography component="h3" variant="h5">
             Enter two products to check for potential ingredient interactions
           </Typography>
-          <form className={classes.form} noValidate>
+          {/* <form className={classes.form} noValidate> */}
             <ProductDropdown id="product-1-dropdown" products={products} handleChange={handleChange1}/>
             <br />
             <ProductDropdown id="product-2-dropdown" products={products} handleChange={handleChange2}/>
@@ -158,8 +158,9 @@ export default function App() {
             >
               Check for Interactions
             </Button>
-          </form>
-          <div>{actives1}{actives2}</div>
+          {/* </form> */}
+          <div>{`actives1: ${actives1}`}</div>
+          <div>{`actives2: ${actives2}`}</div>
         </div>
         {submitClicked && <ConflictCard actives1={actives1} actives2={actives2} conflict={conflict}checkForConflicts={checkForConflicts}/>}
       </Grid>

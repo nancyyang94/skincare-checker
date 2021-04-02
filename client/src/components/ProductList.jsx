@@ -12,9 +12,20 @@ export default function ProductDropdown({ products, id, handleChange }) {
       style={{ width: 550 }}
       renderInput={(params) => <TextField
         {...params}
-        label="Product"
-        variant="outlined"
-        onChange={handleChange} />}
+        // label="Product"
+        // variant="outlined"
+        // onChange={handleChange}
+        // variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="product1"
+              label="Product 1"
+              name="product-1"
+              type="text"
+              onChange={handleChange}
+              autoFocus
+        />}
     />
   );
 }
