@@ -13,7 +13,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import useStyles from '../styling/useStyles.jsx';
 import interactions from './interactions.js';
 import ConflictCard from './Card.jsx';
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import ProductDropdown from './ProductList.jsx';
 
 export default function App() {
   const [product1, setProduct1] = useState('');
@@ -109,6 +110,7 @@ export default function App() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      {/* <ProductDropdown products={products} onChange={handleChange1}/> */}
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
@@ -118,7 +120,10 @@ export default function App() {
             Enter two products to check for potential ingredient interactions
           </Typography>
           <form className={classes.form} noValidate>
-            <TextField
+            <ProductDropdown id="product-1-dropdown" products={products} handleChange={handleChange1}/>
+            <br />
+            <ProductDropdown id="product-2-dropdown" products={products} handleChange={handleChange2}/>
+            {/* <TextField
               variant="outlined"
               margin="normal"
               required
@@ -129,8 +134,8 @@ export default function App() {
               type="text"
               onChange={handleChange1}
               autoFocus
-            />
-            <TextField
+            /> */}
+            {/* <TextField
               variant="outlined"
               margin="normal"
               required
@@ -140,7 +145,7 @@ export default function App() {
               type="text"
               id="product2"
               onChange={handleChange2}
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -154,6 +159,7 @@ export default function App() {
               Check for Interactions
             </Button>
           </form>
+          <div>{actives1}{actives2}</div>
         </div>
         {submitClicked && <ConflictCard actives1={actives1} actives2={actives2} conflict={conflict}checkForConflicts={checkForConflicts}/>}
       </Grid>
