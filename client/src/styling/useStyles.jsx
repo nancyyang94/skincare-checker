@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/collection/66351472/900x900)',
+    backgroundImage: 'url(https://source.unsplash.com/collection/66351472/1200x900)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
