@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,8 +20,26 @@ export default function App() {
   const [product2, setProduct2] = useState('');
   const [actives1, setActives1] = useState(null);
   const [actives2, setActives2] = useState(null);
-
   const [submitClicked, setSubmitClicked] = useState(false);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState('');
+  const [products, setProducts] = useState([]);
+
+  const fetchData = () => {
+    axios.get('/products')
+    .then((response) => {
+    setData(response.data);
+    setProducts(response.data.slice());
+    })
+    .catch((error) => {
+    console.log(error);
+    })
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   const classes = useStyles();
 
