@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 const baseURL = 'https://skincare-api.herokuapp.com/product';
 
-const actives = ['retinol', 'lactic acid', 'glycolic acid', 'mandelic acid', 'ascorbic acid', 'vitamin c', 'Benzoyl Peroxide'];
+const actives = ['retinol', 'lactic acid', 'glycolic acid', 'mandelic acid', 'ascorbic acid', 'ascorbic acid (20%)', 'vitamin c', 'Benzoyl Peroxide'];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

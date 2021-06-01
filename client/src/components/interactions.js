@@ -3,15 +3,17 @@ const messages = {
 
   1: 'may cause over-exfoliation, resulting in increased skin and sun sensitivity; separate products into day/night routines.',
 
-  2: 'deactivates the efficacy of the other ingredient',
+  2: 'deactivates the efficacy of the other ingredient.',
 
-  3: 'renders the effects of both useless as benzoyl peroxide will oxidize vitamin C; use on alternative days'
+  3: 'renders the effects of both useless as benzoyl peroxide will oxidize vitamin c; use on alternative days.'
 
 };
 
 const interactions = {
   'retinol': {
     'ascorbic acid' : `${messages['1']}`,
+
+    'ascorbic acid (20%)' : `${messages['1']}`,
 
     'salicylic acid' : `${messages['0']}`,
 
@@ -44,6 +46,11 @@ const interactions = {
     'Benzoyl Peroxide': `${messages['3']}`,
   },
 
+  'ascorbic acid (20%)': {
+    'retinol': `${messages['1']}`,
+
+    'Benzoyl Peroxide': `${messages['3']}`,
+  },
 
   'Benzoyl Peroxide': {
     'retinol' : `${messages['2']}`,
